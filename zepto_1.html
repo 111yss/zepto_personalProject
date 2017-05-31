@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/zepto.min.js"></script>
+	</head>
+	<body>
+		<ul>
+			<li>111</li>
+			<li class="li">222</li>
+		</ul>
+		<!--兼容IE-->
+		<!--<script>
+		    document.write('<script src='+('__proto__' in{} ? 'js/zepto' :'js/jquery-1.11.0') +'.min.js><\/script>')
+	   </script>-->
+	   <script type="text/javascript">
+	   		Zepto(function(){
+	   			var p=$("<p />",{text:'hello world',class:'p1',id:'p1',css:{background:'red',color:'#fff'}})
+	   			console.log(p.html());
+	   			p.appendTo('body');
+	   			
+	   			var cal=$.camelCase('hello-world');
+	   			console.log(cal);
+//	   			$.each----遍历
+	   			$.each(['a','b','c'],function(item,index){
+	   				console.log(item+"is"+index);
+	   			}
+	   			)
+//	   			$.extend----复制(true:深;false:浅)/clone():深度克隆
+				var target={
+					one:'111'
+				};
+				var source={
+					two:'222'
+				}
+				var ext=$.extend(false,target,source)
+				console.log(ext);
+//				$.grep---获取新数组
+				$.grep([1,2,3],function(item){
+					var arr=[];
+					if(item>1){
+						arr.push(item);
+						console.log(arr)
+					}
+					
+				})
+//				$.inArray
+				var arry=$.inArray('abc',["cba","bac",'abc'],0);
+//				$.map----遍历
+				var j
+				$.map([1,2,3,4,5],function(item){
+					if(item>1){
+						j=item*item
+						return j;
+						
+					}
+				})
+				console.log(j)
+	   		})
+//	   		$.trim----删除空白字符(开始和结尾)
+			var str="      cnvnfj      ";
+			console.log(str);
+			var newStr=$.trim(str);
+			console.log(newStr);
+//			add----添加元素
+			$('<p>234</p>').appendTo('ul li:nth-child(2)');
+//			删除父元素
+			$('.li').unwrap().parents()
+//			添加父元素
+			$('li').wrap('<ul>')
+	   </script>
+	</body>
+</html>
